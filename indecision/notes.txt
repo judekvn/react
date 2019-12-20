@@ -1,0 +1,50 @@
+1) yarn add live-server babel-cli@6.24.1
+    add scripts to package.json and use yarn run ' '.
+2) yarn add webpack@3.1.0
+    configure webpack.config.js
+    entry: './src/app.js'
+    output: {
+        path:path.join(__dirname, 'public')
+        filename: 'bundle.js'
+    }
+    add it to scripts 'webpack --watch'
+    yarn run command
+3) yarn add react@16.0.0 react-dom@16.0.0
+    import them
+4) yarn add babel-core@6.25.0 babel-loader@7.1.1
+    setup loader module rules on webpack.config.js
+    module: {
+        rules: [{
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
+        }]
+    }
+    after this setup .babelrc
+    {
+    "presets": ["env", "react"]
+    }
+5) add sourcemap to webpack.config.js
+    devtool: 'cheap-module-eval-source-map'
+6) yarn add webpack-dev-server@2.5.1
+    devServer: {
+        contentBase: path.join(__dirname, 'public')
+    }
+    add webpack-dev-sever to scripts and remv --watch webpack
+    yarn run
+7) yarn add babel-plugin-transform-class-properties@6.24.1
+    add this to .babelrc
+    "plugins": ["transform-class-properties"]
+8) yarn add style-loader@0.18.2 css-loader@0.28.4
+   yarn add sass-loader@6.0.6 node-sass@4.5.3
+    add this to module.rules array[]
+    {
+      test: /\.s?css$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
+    }
+9) yarn add normalize.css@7.0.0
+    import 'normalize.css/normalize.css' in app.js
